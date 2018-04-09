@@ -3,4 +3,12 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="black_overlay">#66000000</color>
+    <color name="colorBlack">#000000</color>
+    <color name="card_half_transparent">#1fffffff</color>
+    <color name="colorGray">#e0e0e0</color>
+    <color name="yellow">#79f5a623</color>
+    <color name="colorBlueDark">#009A9A</color>
 </resources>
