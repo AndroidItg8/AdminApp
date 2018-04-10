@@ -35,7 +35,7 @@ import butterknife.Unbinder;
  * Use the {@link TeacherDetailFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class TeacherDetailFragment extends Fragment {
+public class TeacherDetailFragment extends Fragment implements OnRecyclerItemClickListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -124,7 +124,7 @@ public class TeacherDetailFragment extends Fragment {
 
             @Override
             public OnRecyclerItemClickListener getListener() {
-                return this;
+                return TeacherDetailFragment.this;
             }
         });
     }
@@ -196,6 +196,11 @@ public class TeacherDetailFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
+    }
+
+    @Override
+    public void onItemClicked(View view, int position) {
+
     }
 
     /**

@@ -2,20 +2,18 @@ package com.itg8.adminapp.home;
 
 
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.itg8.adminapp.R;
-import com.itg8.adminapp.commonMethod.CommonMethod;
+import com.itg8.adminapp.common.CommonMethod;
 import com.itg8.adminapp.widget.ViewPagerIndicator;
 
 import butterknife.BindView;

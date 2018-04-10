@@ -15,6 +15,7 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.itg8.adminapp.R;
+import com.itg8.adminapp.bus.BusFragment;
 import com.itg8.adminapp.teachers.TeachersFragment;
 
 import butterknife.BindView;
@@ -42,6 +43,11 @@ public class MainActivity extends AppCompatActivity {
 
                     return true;
                 case R.id.navigation_dashboard:
+                    FragmentManager fm = getSupportFragmentManager();
+                    FragmentTransaction ft = fm.beginTransaction();
+                    ft.replace(R.id.frame_container, BusFragment.newInstance("",""), BusFragment.class.getSimpleName());
+                    ft.addToBackStack(HomeFragment.class.getSimpleName());
+                    ft.commit();
 
                     return true;
                 case R.id.navigation_notifications:

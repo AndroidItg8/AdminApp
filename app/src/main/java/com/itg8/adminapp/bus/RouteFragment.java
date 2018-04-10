@@ -1,24 +1,20 @@
-package com.itg8.adminapp.home;
+package com.itg8.adminapp.bus;
 
 
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.CardView;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.FrameLayout;
-import android.widget.RadioGroup;
 
 import com.itg8.adminapp.R;
+import com.itg8.adminapp.common.GenericAdapter;
+import com.itg8.adminapp.common.OnRecyclerItemClickListener;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -26,29 +22,24 @@ import butterknife.Unbinder;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link AlertDetailsFragment#newInstance} factory method to
+ * Use the {@link RouteFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class AlertDetailsFragment extends Fragment implements HomeItemAdapter.itemClickedListner {
+public class RouteFragment extends Fragment implements OnRecyclerItemClickListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
-    Unbinder unbinder;
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
-
+    Unbinder unbinder;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    private List<String> list;
-    private Animation anim;
-    private HomeItemAdapter adapter;
 
 
-    public AlertDetailsFragment() {
+    public RouteFragment() {
         // Required empty public constructor
     }
 
@@ -58,11 +49,11 @@ public class AlertDetailsFragment extends Fragment implements HomeItemAdapter.it
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment AlertDetailsFragment.
+     * @return A new instance of fragment RouteFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static AlertDetailsFragment newInstance(String param1, String param2) {
-        AlertDetailsFragment fragment = new AlertDetailsFragment();
+    public static RouteFragment newInstance(String param1, String param2) {
+        RouteFragment fragment = new RouteFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -83,28 +74,54 @@ public class AlertDetailsFragment extends Fragment implements HomeItemAdapter.it
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_alert_details, container, false);
+        View view = inflater.inflate(R.layout.fragment_route, container, false);
         unbinder = ButterKnife.bind(this, view);
-        initRecyclerView();
+        initView();
         return view;
     }
 
-    private void initRecyclerView() {
-        anim = AnimationUtils.loadAnimation(getActivity(),R.anim.raisecard);
-     list = new ArrayList();
-     list.add("abc");
-     list.add("abc");
-     list.add("abc");
-     list.add("abc");
-     list.add("abc");
-     list.add("abc");
-     list.add("abc");
-     list.add("abc");
-     list.add("abc");
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
-        adapter=new HomeItemAdapter(getActivity(),list,this);
-        recyclerView.setAdapter(adapter);
+    private void initView() {
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setNestedScrollingEnabled(false);
+
+        recyclerView.setAdapter( new GenericAdapter<Object,RouteViewHolder>(new ArrayList(),20) {
+            @Override
+            public RouteViewHolder setViewHolder(ViewGroup parent, OnRecyclerItemClickListener listener) {
+                RouteViewHolder view = new RouteViewHolder(LayoutInflater.from(getContext()).inflate(R.layout.item_rv_route, parent, false));
+                view.setListener(listener);
+                return view;
+            }
+
+            @Override
+            public void onBindData(RouteViewHolder holder, Object val) {
+
+//                if(holder.getAdapterPosition()==0)
+//                {
+//                    holder.lineTop.setVisibility(View.GONE);
+//                }else
+//                {
+//                    holder.lineTop.setVisibility(View.VISIBLE);
+//
+//                }
+//
+//                if(holder.getAdapterPosition()==20)
+//                {
+//                    holder.lineBottom.setVisibility(View.GONE);
+//
+//
+//                }else
+//                {
+//                    holder.lineBottom.setVisibility(View.VISIBLE);
+//
+//                }
+            }
+
+
+            @Override
+            public OnRecyclerItemClickListener getListener() {
+                return RouteFragment.this;
+            }
+        });
     }
 
     @Override
@@ -114,14 +131,7 @@ public class AlertDetailsFragment extends Fragment implements HomeItemAdapter.it
     }
 
     @Override
-    public void ItemClicked(int position, String item,  CardView cardView) {
-        cardView.startAnimation(anim);
-        list.set(0,item);
-        adapter.notifyDataSetChanged();
-        recyclerView.getLayoutManager().scrollToPosition(0);
+    public void onItemClicked(View view, int position) {
+
     }
-
-
-
-
 }

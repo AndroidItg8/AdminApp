@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_centerVertical="true"
+
+    android:gravity="center">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardUseCompatPadding="true"
+        android:layout_marginTop="08dp"
+        android:layout_marginBottom="08dp"
+        app:cardPreventCornerOverlap="true"
+        android:layout_toEndOf="@+id/rl_time"
+        android:layout_toRightOf="@+id/rl_time">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+
+        <TextView
+            android:id="@+id/lbl_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="04dp"
+            android:layout_marginLeft="04dp"
+            android:layout_marginRight="04dp"
+            android:layout_marginStart="04dp"
+            android:layout_toStartOf="@+id/lbl_student_count"
+            android:fontFamily="@font/roboto_light"
+            android:padding="04dp"
+            android:text=" 2nd, 3rd Floor, Infotech Tower IT park, South Ambazari Rd M.I.D.C, Gopal, M.I.D.C., Parsodi, Subhash Nagar, Nagpur"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/text_size_14"
+            android:textStyle="normal"
+            android:layout_toLeftOf="@+id/lbl_student_count" />
+
+
+        <TextView
+            android:id="@+id/lbl_student_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+
+            android:layout_centerVertical="true"
+            android:layout_margin="08dp"
+
+            android:fontFamily="@font/roboto_light"
+            android:gravity="center"
+            android:padding="10dp"
+            android:background="@color/colorPrimary"
+            android:text="10\n Student's"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/text_size_14"
+            android:textStyle="normal" />
+
+
+
+
+
+
+
+
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+
+    <TextView
+        android:id="@+id/lbl_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="08dp"
+        android:layout_marginStart="08dp"
+        android:fontFamily="@font/roboto_light"
+        android:gravity="center"
+        android:text="07:30\n am"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/text_size_14"
+        android:textStyle="normal" />
+
+    <RelativeLayout
+        android:id="@+id/rl_time"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/lbl_time"
+        android:layout_marginLeft="08dp"
+        android:layout_marginStart="08dp"
+        android:layout_toRightOf="@+id/lbl_time">
+
+        <View
+            android:id="@+id/line_top"
+            android:layout_width="1px"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/img_time_line"
+            android:layout_marginLeft="12dp"
+            android:layout_marginStart="12dp"
+            android:background="@color/black" />
+
+
+        <ImageView
+            android:id="@+id/img_time_line"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/bg_time_line" />
+        <View
+            android:id="@+id/line_bottom"
+            android:layout_width="1px"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginStart="12dp"
+            android:layout_below="@+id/img_time_line"
+            android:background="@color/black" />
+
+
+    </RelativeLayout>
+
+
+
+    <!--android:layout_alignBottom="@+id/lbl_address"-->
+    <!--android:layout_alignTop="@+id/lbl_address"-->
+
+
+</RelativeLayout>

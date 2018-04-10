@@ -6,6 +6,8 @@
     app:cardBackgroundColor="@color/colorBlueDark"
     app:cardPreventCornerOverlap="true"
     app:cardCornerRadius="08dp"
+    android:id="@+id/cardView"
+
     app:cardUseCompatPadding="true">
 
     <RelativeLayout

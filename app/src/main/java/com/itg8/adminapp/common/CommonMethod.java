@@ -1,4 +1,4 @@
-package com.itg8.adminapp.commonMethod;
+package com.itg8.adminapp.common;
 
 /**
  * Created by Android itg 8 on 4/9/2018.

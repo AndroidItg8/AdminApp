@@ -18,4 +18,8 @@
     <color name="yellow">#79f5a623</color>
     <color name="colorBlueDark">#009A9A</color>
     <color name="colorOrangeLight">#dc382f</color>
+
+    <color name="colorGreenDark">#2BAD35</color>
+    <color name="colorBlueDarks">#00A6FC</color>
+    <color name="colorRedDark">#CC2F20</color>
 </resources>

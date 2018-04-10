@@ -6,7 +6,7 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
-public abstract class GenericAdapter<T,E extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<E> implements OnRecyclerItemClickListener {
+public abstract class GenericAdapter<T,E extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<E> {
     private List<T> items;
     private int count;
     private OnRecyclerItemClickListener listener;
@@ -51,7 +51,6 @@ public abstract class GenericAdapter<T,E extends RecyclerView.ViewHolder> extend
         return items.get(position);
     }
 
-    @Override
-    public void onItemClicked(View view, int position) {
-    }
+
+
 }

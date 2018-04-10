@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="4dp"
         android:text="Teacher Name"
-        app:fontFamily="@font/roboto_bold"
+        android:fontFamily="@font/roboto"
         android:textAppearance="@style/TextAppearance.AppCompat.Button"
         app:layout_constraintStart_toEndOf="@id/image_person_profile"
         app:layout_constraintTop_toTopOf="@id/image_person_profile"
