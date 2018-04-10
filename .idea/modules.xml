@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/AdminApp.iml" filepath="$PROJECT_DIR$/AdminApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/AdminApp-master.iml" filepath="$PROJECT_DIR$/AdminApp-master.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/callibrary/callibrary.iml" filepath="$PROJECT_DIR$/callibrary/callibrary.iml" />
     </modules>
   </component>
 </project>

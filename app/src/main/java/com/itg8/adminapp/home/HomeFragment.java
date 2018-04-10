@@ -2,6 +2,7 @@ package com.itg8.adminapp.home;
 
 
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
@@ -15,6 +16,7 @@ import android.widget.TextView;
 
 import com.itg8.adminapp.R;
 import com.itg8.adminapp.commonMethod.CommonMethod;
+import com.itg8.adminapp.widget.ViewPagerIndicator;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -34,8 +36,6 @@ public class HomeFragment extends Fragment implements ViewPager.OnPageChangeList
     ViewPager viewPagerHome;
     @BindView(R.id.viewPagerDescription)
     ViewPager viewPagerDescription;
-    @BindView(R.id.frame_container)
-    FrameLayout frameContainer;
     Unbinder unbinder;
     @BindView(R.id.lbl_header)
     TextView lblHeader;
@@ -45,14 +45,16 @@ public class HomeFragment extends Fragment implements ViewPager.OnPageChangeList
     ImageView imgLeft;
     @BindView(R.id.rl_top)
     RelativeLayout rlTop;
+    @BindView(R.id.tabLayout)
+    ViewPagerIndicator tabLayout;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
     private static final String TAG = "HomeFragment";
     private int position;
-    private boolean isLeftClicked=false;
-    private boolean isRightClicked=false;
+    private boolean isLeftClicked = false;
+    private boolean isRightClicked = false;
 
 
     public HomeFragment() {
@@ -99,13 +101,32 @@ public class HomeFragment extends Fragment implements ViewPager.OnPageChangeList
     private void initView() {
         setOnClickedListner();
         homeViewPager();
-        descriptionViewPager();
+        initTabLayout();
     }
 
-    private void descriptionViewPager() {
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getActivity(), getChildFragmentManager(), CommonMethod.FROM_DESCRIPTION);
+    private void initTabLayout() {
+        SimpleFragmentPagerAdapter adapter = new SimpleFragmentPagerAdapter(getActivity(), getFragmentManager());
+
+        // Set the adapter onto the view pager
         viewPagerDescription.setAdapter(adapter);
+
+        // Give the TabLayout the ViewPager
+        tabLayout.setPager(viewPagerDescription);
+
+//        // Iterate over all tabs and set the custom view
+//        for (int i = 0; i < tabLayout.getTabCount(); i++) {
+//            TabLayout.Tab tab = tabLayout.getTabAt(i);
+//            if (tab != null) {
+//                tab.setCustomView(adapter.getTabView(i));
+//
+//            }
+//        }
     }
+
+//    private void descriptionViewPager() {
+//        ViewPagerAdapter adapter = new ViewPagerAdapter(getActivity(), getChildFragmentManager(), CommonMethod.FROM_DESCRIPTION);
+//        viewPagerDescription.setAdapter(adapter);
+//    }
 
     private void homeViewPager() {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getActivity(), getChildFragmentManager(), CommonMethod.FROM_HOME);
@@ -125,8 +146,8 @@ public class HomeFragment extends Fragment implements ViewPager.OnPageChangeList
 
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-        Log.d(TAG, "onPageScrolled: position:"+position+"positionOffset:"+positionOffset+"pospixel"+positionOffsetPixels);
-this.position=position;
+        Log.d(TAG, "onPageScrolled: position:" + position + "positionOffset:" + positionOffset + "pospixel" + positionOffsetPixels);
+        this.position = position;
 
 
     }
@@ -134,55 +155,50 @@ this.position=position;
     @Override
     public void onPageSelected(int position) {
         this.position = position;
-        Log.d(TAG, "onPageSelected: Possition"+position);
+        Log.d(TAG, "onPageSelected: Possition" + position);
 
 
     }
 
     @Override
     public void onPageScrollStateChanged(int state) {
-        Log.d(TAG, "onPageScrollStateChanged: state"+state);
+        Log.d(TAG, "onPageScrollStateChanged: state" + state);
 
 
     }
 
     @Override
     public void onClick(View view) {
-        switch (view.getId())
-        {
+        switch (view.getId()) {
             case R.id.img_left:
                 Log.d(TAG, "onClick: imgLeft");
-               isLeftClicked =true;
+                isLeftClicked = true;
                 setLeftButtonClicked(position);
                 break;
             case R.id.img_right:
                 Log.d(TAG, "onClick: imgRight");
-                isRightClicked =true;
+                isRightClicked = true;
                 setRightButtonClicked(position);
                 break;
         }
     }
 
     private void setRightButtonClicked(int position) {
-        if(isRightClicked)
-        {
-            position-=position;
+        if (isRightClicked) {
+            position -= position;
             setLeftButtonClicked(position);
 
         }
-        isRightClicked=!isRightClicked;
+        isRightClicked = !isRightClicked;
     }
 
 
-
-
     private void setLeftButtonClicked(int position) {
-        if(isLeftClicked)
-        {
-            position+=position;
+        if (isLeftClicked) {
+            position += position;
             viewPagerHome.setCurrentItem(position);
         }
-        isLeftClicked=!isLeftClicked;
+        isLeftClicked = !isLeftClicked;
 
     }
 

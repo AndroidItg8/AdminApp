@@ -1,78 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.itg8.adminapp.home.HomeFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
 
-    <RelativeLayout
-        android:id="@+id/rl_top"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="08dp">
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/lbl_header"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:layout_margin="08dp"
-            android:fontFamily="@font/roboto_medium"
-            android:text="Alert"
-            android:textAllCaps="false"
-            android:textColor="@color/colorBlack"
-            android:textSize="@dimen/medium_2_text_size" />
-
-        <ImageView
-            android:id="@+id/img_right"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_margin="08dp"
-            app:srcCompat="@drawable/ic_right_arrow" />
-
-        <ImageView
-
-            android:id="@+id/img_left"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_margin="08dp"
-            app:srcCompat="@drawable/ic_right_arrow" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1px"
-            android:layout_marginTop="04dp"
-            android:background="@color/colorGray"
-            android:layout_below="@+id/lbl_header"/>
-    </RelativeLayout>
-
-    <android.support.v4.view.ViewPager
-        android:id="@+id/viewPagerHome"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_below="@+id/rl_top"
-        android:layout_marginStart="08dp"
-        android:layout_marginEnd="08dp"
-        android:layout_marginRight="08dp"
-        android:layout_marginLeft="08dp"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
-
-    <android.support.v4.view.ViewPager
-        android:id="@+id/viewPagerDescription"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_below="@+id/viewPagerHome"
-        android:layout_margin="08dp" />
-
-    <FrameLayout
-        android:id="@+id/frame_container"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/viewPagerDescription" />
+        tools:context="com.itg8.adminapp.home.HomeFragment">
+
+        <RelativeLayout
+            android:id="@+id/rl_top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="08dp"
+            android:background="@drawable/bg_btn_border">
+
+            <TextView
+                android:id="@+id/lbl_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/img_left"
+                android:layout_alignTop="@+id/img_left"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_toEndOf="@+id/img_right"
+                android:layout_toLeftOf="@+id/img_left"
+
+                android:layout_toRightOf="@+id/img_right"
+                android:layout_toStartOf="@+id/img_left"
+                android:background="@drawable/bg_header_alert"
+                android:fontFamily="@font/roboto_medium"
+                android:gravity="center"
+                android:text="Alert"
+                android:textAllCaps="true"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/medium_2_text_size" />
+
+            <ImageView
+                android:id="@+id/img_right"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_margin="08dp"
+                android:rotation="180"
+                app:srcCompat="@drawable/ic_right_arrow" />
+
+            <ImageView
+
+                android:id="@+id/img_left"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_margin="08dp"
+                app:srcCompat="@drawable/ic_right_arrow" />
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/viewPagerHome"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_below="@+id/lbl_header"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="08dp"
+                android:layout_marginLeft="08dp"
+                android:layout_marginRight="08dp"
+                android:layout_marginStart="08dp"
+                android:layout_marginTop="8dp"/>
 
 
-</RelativeLayout>
+        </RelativeLayout>
+        <HorizontalScrollView
+            android:id="@+id/horizontal_Scrollview"
+            android:layout_below="@+id/rl_top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <com.itg8.adminapp.widget.ViewPagerIndicator
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tabLayout"
+            app:enableAnimation="true"
+            />
+        </HorizontalScrollView>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewPagerDescription"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_below="@+id/horizontal_Scrollview"
+            android:layout_margin="08dp" />
+
+        <FrameLayout
+            android:id="@+id/frame_container_full"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/viewPagerDescription" />
+
+
+    </RelativeLayout>
+</android.support.v4.widget.NestedScrollView>

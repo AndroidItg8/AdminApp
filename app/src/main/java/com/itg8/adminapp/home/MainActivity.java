@@ -6,12 +6,16 @@ import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.itg8.adminapp.R;
+import com.itg8.adminapp.teachers.TeachersFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -33,7 +37,8 @@ public class MainActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    callFragment();
+                    replaceFragment(TeachersFragment.newInstance("",""));
+
 
                     return true;
                 case R.id.navigation_dashboard:
@@ -46,6 +51,12 @@ public class MainActivity extends AppCompatActivity {
             return false;
         }
     };
+
+    private void replaceFragment(Fragment fragment) {
+        FragmentManager manager=getSupportFragmentManager();
+//        FragmentTransaction ft=manager.beginTransaction();
+//        ft.replace(R.id.c)
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

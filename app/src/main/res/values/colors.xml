@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
-
-    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorPrimary">#37474f</color>
+    <color name="colorPrimaryDark">#263238</color>
+    <color name="colorAccent">#f9c33a</color>
     <color name="black_overlay">#66000000</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorGray">#232323</color>
+    <color name="black">#000000</color>
+    <color name="color_green">#738b28</color>
+    <color name="color_red">#8b4028</color>
+    <color name="colorOrange">#EE5A24</color>
+    <color name="colorSunsetOrange">#ff5e57</color>
+
+
     <color name="colorBlack">#000000</color>
     <color name="card_half_transparent">#1fffffff</color>
-    <color name="colorGray">#e0e0e0</color>
     <color name="yellow">#79f5a623</color>
     <color name="colorBlueDark">#009A9A</color>
+    <color name="colorOrangeLight">#dc382f</color>
 </resources>

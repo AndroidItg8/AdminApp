@@ -4,25 +4,39 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.itg8.adminapp.R;
+import com.itg8.adminapp.common.GenericAdapter;
+import com.itg8.adminapp.common.OnRecyclerItemClickListener;
+
+import java.util.ArrayList;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link TeachersFragment.OnFragmentInteractionListener} interface
+ * {@link OnFragmentInteractionListener} interface
  * to handle interaction events.
  * Use the {@link TeachersFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class TeachersFragment extends Fragment {
+public class TeachersFragment extends Fragment implements OnRecyclerItemClickListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    @BindView(R.id.rvTeachers)
+    RecyclerView rvTeachers;
+    Unbinder unbinder;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -65,7 +79,33 @@ public class TeachersFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_teachers, container, false);
+        View view = inflater.inflate(R.layout.fragment_teachers, container, false);
+        unbinder = ButterKnife.bind(this, view);
+        initRecyclerview();
+        return view;
+    }
+
+    private void initRecyclerview() {
+        rvTeachers.setLayoutManager(new LinearLayoutManager(getContext()));
+        rvTeachers.addItemDecoration(new DividerItemDecoration(getActivity(),DividerItemDecoration.VERTICAL));
+        rvTeachers.setAdapter(new GenericAdapter(new ArrayList(),20) {
+            @Override
+            public RecyclerView.ViewHolder setViewHolder(ViewGroup parent, OnRecyclerItemClickListener listener) {
+                TeacherViewHolder view = new TeacherViewHolder(LayoutInflater.from(getContext()).inflate(R.layout.item_teacher_rv, parent, false));
+                view.setListener(listener);
+                return view;
+            }
+
+            @Override
+            public void onBindData(RecyclerView.ViewHolder holder, Object val) {
+
+            }
+
+            @Override
+            public OnRecyclerItemClickListener getListener() {
+                return this;
+            }
+        });
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -78,18 +118,29 @@ public class TeachersFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
+//        if (context instanceof OnFragmentInteractionListener) {
+//            mListener = (OnFragmentInteractionListener) context;
+//        } else {
+//            throw new RuntimeException(context.toString()
+//                    + " must implement OnFragmentInteractionListener");
+//        }
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
+    }
+
+    @Override
+    public void onItemClicked(View view, int position) {
+        getFragmentManager().beginTransaction().replace(R.id.frame_container,TeacherDetailFragment.newInstance("",""),TeacherDetailFragment.class.getSimpleName()).commit();
     }
 
     /**

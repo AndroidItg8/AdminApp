@@ -4,61 +4,55 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:cardUseCompatPadding="true"
-    app:cardPreventCornerOverlap="true"
     app:cardCornerRadius="04dp"
+    app:cardPreventCornerOverlap="true"
+    app:cardUseCompatPadding="true"
     tools:context="com.itg8.adminapp.home.AlertFragment">
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/lbl_title"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/roboto_medium"
-        android:text="Title"
-        android:textAllCaps="true"
-        android:lines="1"
-        android:maxLines="1"
-        android:ellipsize="end"
-        android:textColor="@color/colorBlack"
-        android:textSize="@dimen/medium_text_size"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"/>
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/lbl_description"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/lbl_title"
-        android:layout_marginEnd="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="16dp"
-        android:ellipsize="end"
-        android:fontFamily="@font/roboto_light"
-        android:lines="2"
-        android:maxLines="2"
-        android:text="TitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitle"
-        android:textAllCaps="true"
-        android:textColor="@color/colorBlack"
-        android:textSize="@dimen/small_text_size" />
+        <TextView
+            android:id="@+id/lbl_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/roboto_bold"
+            android:lines="1"
+            android:maxLines="1"
+            android:text="Title"
+            android:textAllCaps="true"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/size_18sp"
+            />
 
-
-
-</RelativeLayout>
-
-
-
-
+        <TextView
+            android:id="@+id/lbl_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lbl_title"
+            android:layout_marginTop="@dimen/size_8dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginStart="16dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/roboto_light"
+            android:lines="2"
+            android:text="There are some problem with account department.Please check whether it is considarable or not"
+            android:textAllCaps="true"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/text_size_14" />
 
 
-
+    </RelativeLayout>
 
 
 </android.support.v7.widget.CardView>
